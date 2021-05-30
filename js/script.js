@@ -8,5 +8,11 @@ function clearMessages(){
 	document.getElementById('messages').innerHTML = '';
 }
 
-let playerMove = 'papier'
-printMessage('Zagrałem' + playerMove + 'Jeśli Twoj ruch to nozyce, to wygrywasz');
+let computerMove = `kamień`;
+let playerMove = 'papier';
+
+printMessage('Zagrałem ' + computerMove + '! Jeśli Twój ruch to, ' + playerMove + ' to wygrywasz!');
+
+
+
+
