@@ -1,13 +1,3 @@
-function printMessage(msg){
-	let div = document.createElement('div');
-	div.innerHTML = msg;
-	document.getElementById('messages').appendChild(div);
-}
-
-function clearMessages(){
-	document.getElementById('messages').innerHTML = '';
-}
-
 let randomNumber = Math.floor(Math.random() * 3 + 1);
 
 console.log('Wylosowana liczba to: ' + randomNumber);
@@ -16,14 +6,13 @@ let computerMove = 'nieznany ruch';
 
 if(randomNumber == 1){
   computerMove = 'kamień';
-printMessage('Mój ruch to: ' + computerMove);
 }else if (randomNumber == 2){
     computerMove = 'nozyce';
-  printMessage('Mój ruch to: ' + computerMove);
 }else if (randomNumber == 3){
     computerMove = 'papier';
-    printMessage('Mój ruch to: ' + computerMove);
 }
+
+printMessage('Ruch komputera: ' + computerMove);
 
 let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
 
@@ -41,27 +30,13 @@ if(playerInput == '1'){
 
 printMessage('Twój ruch to: ' + playerMove);
 
-if(computerMove == 'kamień' && playerMove == 'papier'){
+if(computerMove == 'kamień' && playerMove == 'papier' || computerMove == "nozyce" && playerMove == 'kamień' || computerMove == 'papier' && playerMove == 'nozyce'){
     printMessage('Ty wygrywasz!');
-}else if (computerMove == "nozyce" && playerMove == 'kamień'){
-    printMessage('Ty wygrywasz');
-}else if (computerMove == 'papier' && playerMove == 'nozyce'){
-    printMessage ( 'Ty wygrywasz');
-}
-
-if(playerMove == 'kamień' && computerMove == 'papier'){
+}else if (playerMove == 'nozyce' && computerMove == 'kamień' || playerMove == 'papier' && computerMove == 'nozyce' || playerMove == 'kamień' && computerMove == 'papier'){
     printMessage('Komputer wygrywa!');
-}else if (playerMove == 'nozyce' && computerMove == 'kamień'){
-    printMessage('Komputer wygrywa!');
-}else if (playerMove == 'papier' && computerMove == 'nozyce'){
-    printMessage ( 'Komputer wygrywa!');
-}
-
-if(playerMove == computerMove){
+}else if(playerMove == computerMove){
     printMessage('Remis!');
-}
-
-if(playerMove == 'nieznany ruch'){
+}else if(playerMove == 'nieznany ruch'){
     printMessage('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.')
 }
 
