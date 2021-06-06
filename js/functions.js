@@ -1,16 +1,26 @@
-
-
-    function printMessage(msg) {
-	    let div = document.createElement('div');
+    function printMessage (msg) {
+	    let div = document.createElement ('div');
 	    div.innerHTML = msg;
-	    document.getElementById('messages').appendChild(div);
+	    document.getElementById ('messages').appendChild(div);
     }
 
-    function clearMessages(){
+    function clearMessages () {
 	    document.getElementById('messages').innerHTML = '';
     }
 
+    function playGame (playerInput) {
+        clearMessages ();
+        let playerMove = getMoveName (playerInput);
     
+        printMessage('Twój ruch to: ' + playerMove);
+    
+        let randomNumber = Math.floor (Math.random() * 3 + 1);
+        let computerMove = getMoveName (randomNumber);
+    
+        printMessage ('Ruch komputera: ' + computerMove);
+    
+        displayResult (computerMove, playerMove);
+    }
 
     function getMoveName (argMoveId) {
         if (argMoveId == 1) {
@@ -26,10 +36,6 @@
     }
 
     function displayResult (argComputerMove, argPlayerMove) {
-        if ( playerMove == 'nieznany ruch') {
-            printMessage ('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
-            return
-        }
         if  (
             (argComputerMove == 'kamień' && argPlayerMove == 'papier') 
         ||  (argComputerMove == 'papier' && argPlayerMove == 'nozyce') 
